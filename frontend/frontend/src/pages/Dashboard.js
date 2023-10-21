@@ -40,7 +40,7 @@ export default function Dashboard() {
           </div>
           <div className="flex text-center">
             <div className="COLUMN 1 w-1/3 flex flex-col">
-              <button>This is a button to add a new prescription</button>
+              <button>add medicine</button>
             </div>
             <div className="w-2/3 flex flex-col">
               <button onClick={logMedicine}>This is a button to log medicine</button>
