@@ -26,7 +26,7 @@ function App() {
           Learn React
         </a>
         <p>
-          trying to get something from backend: {testVar}
+          testing changing something ;  to get something from backend: {testVar}
         </p>
       </header>
     </div>
