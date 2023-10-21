@@ -1,49 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import app from '../axiosConfig.js'
 
 export default function Login() {
+  const [input, setInput] = useState('')
 
-  const centerTextHeader = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    top: 100,
-  };
+  var user = ''
+  
+  //check if already logged in
+  const checkAuth = () => {
+    if(localStorage.getItem('user') == '' || localStorage.getItem('user') == null){
+      return true
+    } else {
+        user = localStorage.getItem('user')
+        console.log(user)
+    }
+  }
 
-  const offsetInput = {
-    alignItems: "center",
-    justifyContent: "center",
-    display: "flex",
+  const handleClick = (val) => {
+    localStorage.setItem('user', val)
+    window.location.reload(false)
+  }
 
-  };
+  
+  if(!checkAuth()) {
+    return (
+      <div className="flex flex-col items-center">
+        <h1 className="text-3xl font-bold underline m-10">
+          Froggy Pill
+        </h1>
+        <p>Welcome back {user}!</p>
+        <button className="bg-gray-400 my-10 px-4 py-1 hover:bg-gray-300 font-bold shadow border rounded"><a href="/dashboard">Go to Dashboard</a></button>
+      </div>
 
-  const labelStyle = {
-    marginBottom: "10px", 
-    display: "block",
-  };
+    );
+  }
 
   return (
-    <div className="login">
-      <header className="login-header">
-        <div style={centerTextHeader}>
-          <h1 className="text-3xl font-bold underline">
-            Welcome to FroggyPill!
-          </h1>
-          <p>Enter your username below to log in</p>
-          </div>
+    <div className="flex flex-col items-center">
+      <h1 className="text-3xl font-bold underline m-10">
+        Froggy Pill
+      </h1>
+      <p>Enter your username below to sign up</p>
 
-          
-          <div style={offsetInput}>
-            <label className='p-2 font-medium text-lg' style={labelStyle}>
-              Username</label>
-              <input className="block p-2 shadow border rounded" type="text" 
-                    placeholder="Username">
-              </input>
-          </div>
-      </header>
+      <label className='p-2 font-medium text-lg'>Username</label>
+        <input className="block p-2 shadow border rounded" type="text" placeholder="Username" onChange={(e) => {setInput(e.target.value)}}></input>
+        <button className="bg-gray-400 my-10 px-4 py-1 hover:bg-gray-300 font-bold shadow border rounded" onClick={() => handleClick(input)}>Sign Up</button>
     </div>
-
-  );
+  )
 
 }
 
