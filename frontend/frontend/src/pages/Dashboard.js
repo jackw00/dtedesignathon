@@ -13,29 +13,28 @@ export default function Dashboard() {
 
     return (
 
-      <div className="login">
-      <header className="login-header">
-        <h1 className="text-3xl font-bold underline">
-          TESTING TAILWIND CSS
-        </h1>
-        <div class="inset-44">
-          <img src = {Lily_Pad}>
-          </img>
+      <div className="">
+        <div className="flex-row text-center">
+          <h1 className="text-3xl font-bold underline">
+            TESTING TAILWIND CSS
+          </h1>
         </div>
-          
-        <a
-          className="login-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>
-          testing changing something ;  to get something from backend:
-
-        </p>
-      </header>
+        <div className="flex">
+          <div className="COLUMN 1 w-1/3 flex flex-col">
+            this is where the sticky note thing will be
+          </div>
+          <div className="w-2/3 flex flex-col">
+              <img src={Lily_Pad}></img>
+          </div>
+        </div>
+        <div className="flex text-center">
+          <div className="COLUMN 1 w-1/3 flex flex-col">
+            <button>This is a button to add a new prescription</button>
+          </div>
+          <div className="w-2/3 flex flex-col">
+            <button>This is a button to log medicine</button>
+          </div>
+        </div>
       </div>
     );
 
