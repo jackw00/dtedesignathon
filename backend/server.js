@@ -13,7 +13,7 @@ app.use(cors({
 
 //testing route
 app.get('/example', (req, res) => {
-    res.json({msg: 'Hello! this is coming fr0m the backend!!!'})
+    res.json({msg: 'Gabe is changing the backend!!!'})
 })
 
 //listen for request
