@@ -80,7 +80,6 @@ export default function Dashboard() {
   }
 
   const deleteMedicine = (id) => {
-    console.log(id)
     app.delete(`/deleteMed/${id}`).then((response) => {
 
     })
