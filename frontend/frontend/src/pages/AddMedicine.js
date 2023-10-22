@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import app from '../axiosConfig.js'
+import Pill from "../imgs/Pill.png"
 
 export default function Login() {
     const [name, setName] = useState('')
@@ -69,7 +70,6 @@ export default function Login() {
 
     </div>
   )
-
 }
 
 

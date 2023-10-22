@@ -6,7 +6,6 @@ import Frog from "../imgs/Frog.png";
 import Old_Frog from "../imgs/Old_Frog.png";
 import Tadpole_Frog from "../imgs/Tadpole_Frog.png";
 import Tadpole from "../imgs/Tadpole.png"
-import Pill from "../imgs/Pill.png"
 
 export default function Dashboard() {
   

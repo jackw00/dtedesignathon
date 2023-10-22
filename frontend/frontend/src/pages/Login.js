@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import app from '../axiosConfig.js'
 
 export default function Login() {
   const [input, setInput] = useState('')
