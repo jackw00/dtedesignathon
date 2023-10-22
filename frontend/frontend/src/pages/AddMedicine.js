@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import app from '../axiosConfig.js'
 import Pill from "../imgs/Pill.png"
 
+
 export default function Login() {
     const [name, setName] = useState('')
     const [dosage, setDosage] = useState('')
@@ -56,20 +57,21 @@ export default function Login() {
 
   return (
     <div className="flex flex-col items-center h-screen bg-[#c3ffd4]">
-        <h2 className="font-bold text-3xl p-5 mt-5">Add New Medicine</h2>
-        <form className="w-full max-w-md rounded-2xl p-5 mx-10 flex flex-col">
-            <label className="p-2 font-bold text-lg">Name: </label>
-            <input className="p-2 shadow border rounded" placeholder="Flintstone Gummy" onChange={(e) => {setName(e.target.value)}}></input>
-            <label className="block p-2 font-bold text-lg text-left">Amount: </label>
-            <input className="block p-2 shadow border rounded" type="text" placeholder="2 pills, 250mg, 2oz, etc." onChange= {(e) => {setDosage(e.target.value)}}></input>
-            <label className="block p-2 font-bold text-lg">Time (military time): </label>
-            <input className="block p-2 shadow border rounded" placeholder="12:00" type="text" onChange= {(e) => {setTime(e.target.value)}}></input>
-            <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded" onClick={addMedicine}>Submit</button>
-        </form>
-        <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded"><a href='/dashboard'>Return to Dashboard</a></button>
-
-    </div>
-  )
+    <h2 className="font-bold text-3xl p-5 mt-5">Add New Medicine</h2>
+    <div className="flex justify-center items-start">
+      <form className="w-full max-w-md rounded-2xl p-5 mx-10 flex flex-col">
+        <label className="p-2 font-bold text-lg">Name: </label>
+        <input className="p-2 shadow border rounded" placeholder="Flintstone Gummy" onChange={(e) => {setName(e.target.value)}}></input>
+        <label className="block p-2 font-bold text-lg text-left">Amount: </label>
+        <input className="block p-2 shadow border rounded" type="text" placeholder="2 pills, 250mg, 2oz, etc." onChange={(e) => {setDosage(e.target.value)}}></input>
+        <label className="block p-2 font-bold text-lg">Time (military time): </label>
+        <input className="block p-2 shadow border rounded" placeholder="12:00" type="text" onChange={(e) => {setTime(e.target.value)}}></input>
+        <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded" onClick={addMedicine}>Submit</button>
+      </form>
+     </div>
+    <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded"><a href='/dashboard'>Return to Dashboard</a></button>
+  </div>
+);
 }
 
 
