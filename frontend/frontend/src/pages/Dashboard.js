@@ -43,13 +43,31 @@ export default function Dashboard() {
       }
       else if (newPoints > 15 && newPoints <= 20) {
         setFrogImg(Old_Frog);
-      }
-      
-    }
-    
-  }
-};
+      } 
+    }}
+  };
   var user = localStorage.getItem('user')
+
+  const updatePoints = () => {
+    if (newPoints > 20) {
+      localStorage.setItem("points", 0);
+      if (window.confirm(rebirthText) == true) {
+        setFrogImg(Tadpole);
+      }
+    }
+    else if (newPoints <= 5) {
+      setFrogImg(Tadpole);
+    }
+    else if (newPoints > 5 && newPoints <= 10) {
+      setFrogImg(Tadpole_Frog);
+    }
+    else if (newPoints > 10 && newPoints <= 15) {
+      setFrogImg(Frog);
+    }
+    else if (newPoints > 15 && newPoints <= 20) {
+      setFrogImg(Old_Frog);
+    } 
+  }
 
   const getMedicine = () => {
     app.post('/show', {
@@ -86,9 +104,6 @@ export default function Dashboard() {
     }
   }
 
-  getMedicine()
-
-
   const checkAuth = () => {
     if(localStorage.getItem('user') == '' || localStorage.getItem('user') == null){
       return true
@@ -109,6 +124,9 @@ export default function Dashboard() {
       </div>
     )
   }
+
+  updatePoints();
+  getMedicine();
 
     return (
       <div class="overscroll-none">
