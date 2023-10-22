@@ -31,6 +31,7 @@ app.post('/create', (req, res) => {
             if(err) {
                 console.log(err)
             } else {
+                console.log("Medicine added!")
                 res.send("Medicine added!")
             }
         }
