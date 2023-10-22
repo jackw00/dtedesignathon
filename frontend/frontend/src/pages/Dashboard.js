@@ -8,9 +8,6 @@ import Tadpole_Frog from "../imgs/Tadpole_Frog.png";
 import Tadpole from "../imgs/Tadpole.png"
 import Pill from "../imgs/Pill.png"
 
-
-
-
 export default function Dashboard() {
   
   const [medicineList, setMedicineList] = useState([])
@@ -79,14 +76,14 @@ export default function Dashboard() {
   getMedicine()
 
     return (
-      <div class="h-screen bg-gradient-to-b 
+      <div class="bg-gradient-to-b 
       from-[#f5f7fa] to-[#54a7ff]">
         <div className="">
           <div className="flex-row text-center bg-[#97de70] shadow-lg shadow-[#50763c] box-sizing: h-28 w-200 p-7 text-5xl font-mono font-bold">
-                Froggy Pill
+              Froggy Pill
           </div>
           <div className="flex">
-            <div className="w-1/3 flex flex-col p-5">
+            <div className="w-full md:w-1/3 lg:w-1/3 xl:w-1/3 flex flex-col p-5 mt-10 font-mono text-center">
               <p className="font-bold text-2xl underline" >Medicine</p>
               <ol className="m-2">
                 {medicineList.map((val, key) => {
@@ -95,14 +92,13 @@ export default function Dashboard() {
                       <p className="font-bold text-lg">{val.name}</p>
                       <p className="text-">- amount: {val.dosage}</p>
                       <p>- take at {val.timeStr}</p>
-                      <button className="text-sm text-red-800 hover:text-red-500" onClick={() => {deleteMedicine(val.id)}}>delete</button>
-                      <hr className=""></hr>
+                      <button className="mb-2 text-sm text-red-800 hover:text-red-500" onClick={() => {deleteMedicine(val.id)}}>delete</button>
                     </li>
                   )
                 })}
               </ol>
             </div>
-            <div className="w-2/3 flex flex-col items-center justify-center">
+            <div className="w-full md:w-2/3 lg:w-2/3 xl:w-2/3 flex flex-col items-center justify-center">
               <img src={frogImg} alt="Frog Image"></img>
               <div className="w-2/3 flex flex-col">
               <button onClick={logMedicine} class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-2 
