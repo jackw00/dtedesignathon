@@ -1,6 +1,6 @@
 import React from "react";
 import app from "../axiosConfig.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Frog from "../imgs/Frog.png";
 import Old_Frog from "../imgs/Old_Frog.png";
@@ -11,6 +11,23 @@ export default function Dashboard() {
   
   const [medicineList, setMedicineList] = useState([])
   const [frogImg, setFrogImg] = useState(Tadpole);
+
+  useEffect(() => {
+    let newPoints = localStorage.getItem('points')
+    if (newPoints <= 5) {
+      setFrogImg(Tadpole);
+    }
+    else if (newPoints > 5 && newPoints <= 10) {
+      setFrogImg(Tadpole_Frog);
+    }
+    else if (newPoints > 10 && newPoints <= 15) {
+      setFrogImg(Frog);
+    }
+    else if (newPoints > 15 && newPoints <= 20) {
+      setFrogImg(Old_Frog);
+    } 
+  }, []);
+
 
   const logMedicine = () => {
     const storedPoints = parseInt(localStorage.getItem("points"), 10) || 0;
@@ -43,13 +60,26 @@ export default function Dashboard() {
       }
       else if (newPoints > 15 && newPoints <= 20) {
         setFrogImg(Old_Frog);
-      }
-      
-    }
-    
-  }
-};
+      } 
+    }}
+  };
   var user = localStorage.getItem('user')
+
+  const updatePoints = () => {
+    let newPoints = localStorage.getItem('points')
+    if (newPoints <= 5) {
+      setFrogImg(Tadpole);
+    }
+    else if (newPoints > 5 && newPoints <= 10) {
+      setFrogImg(Tadpole_Frog);
+    }
+    else if (newPoints > 10 && newPoints <= 15) {
+      setFrogImg(Frog);
+    }
+    else if (newPoints > 15 && newPoints <= 20) {
+      setFrogImg(Old_Frog);
+    } 
+  }
 
   const getMedicine = () => {
     app.post('/show', {
@@ -86,9 +116,6 @@ export default function Dashboard() {
     }
   }
 
-  getMedicine()
-
-
   const checkAuth = () => {
     if(localStorage.getItem('user') == '' || localStorage.getItem('user') == null){
       return true
@@ -109,6 +136,8 @@ export default function Dashboard() {
       </div>
     )
   }
+
+  getMedicine();
 
     return (
       <div class="overscroll-none">

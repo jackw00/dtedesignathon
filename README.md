@@ -16,3 +16,4 @@ Competition: Froggy Pill was originally developed for the University of Florida 
 Try Froggy Pill Now: Ready to take care of your virtual frog and never miss a prescription? Try Froggy Pill now and experience the best of both worlds!
 
 Tech Stack: React, nodejs, express, mySQL
+
