@@ -14,22 +14,45 @@ import Pill from "../imgs/Pill.png"
 export default function Dashboard() {
   
   const [medicineList, setMedicineList] = useState([])
+  const [frogImg, setFrogImg] = useState(Tadpole);
 
   const logMedicine = () => {
-    let text = "Have you really taken your medicine? :)";
     const storedPoints = parseInt(localStorage.getItem("points"), 10) || 0;
-
-    if (window.confirm(text) == true) {
-      if (storedPoints === 0) {
-        localStorage.setItem("points", 1);
-      } 
-      else if (storedPoints !== 0) {
-        const newPoints = storedPoints + (Math.floor(Math.random() * 3) + 1);
-        localStorage.setItem("points", newPoints);
-      }
+    let text = "Have you really taken your medicine? :)";
+    let rebirthText = "Congratulations! Your frog has made it to old age and is ready to retire. Do you wish to receive a new tadpole?";
+    
+  if (window.confirm(text) == true) {
+    if (storedPoints === 0) {
+      localStorage.setItem("points", 1);
     }
-  };
 
+    else if (storedPoints !== 0) {
+      const newPoints = storedPoints + (Math.floor(Math.random() * 3) + 1);
+      localStorage.setItem("points", newPoints);
+
+      if (newPoints > 20) {
+        localStorage.setItem("points", 0);
+        if (window.confirm(rebirthText) == true) {
+          setFrogImg(Tadpole);
+        }
+      }
+      else if (newPoints <= 5) {
+        setFrogImg(Tadpole);
+      }
+      else if (newPoints > 5 && newPoints <= 10) {
+        setFrogImg(Tadpole_Frog);
+      }
+      else if (newPoints > 10 && newPoints <= 15) {
+        setFrogImg(Frog);
+      }
+      else if (newPoints > 15 && newPoints <= 20) {
+        setFrogImg(Old_Frog);
+      }
+      
+    }
+    
+  }
+};
   var user = localStorage.getItem('user')
 
   const getMedicine = () => {
@@ -81,7 +104,7 @@ export default function Dashboard() {
               </ol>
             </div>
             <div className="w-2/3 flex flex-col">
-                <img src={Tadpole}></img>
+              <img src={frogImg} alt="Frog Image"></img>
             </div>
           </div>
           <div className="flex text-center">
