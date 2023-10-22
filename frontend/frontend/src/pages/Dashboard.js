@@ -88,6 +88,11 @@ export default function Dashboard() {
           <div className="flex">
             <div className="w-1/3 flex flex-col p-5">
               <p className="font-bold text-2xl underline" >Medicine</p>
+              <div>
+              <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-2 
+              border-b-4 border-green-700 hover:border-blue-500 rounded">
+                <a href='/addmedicine'>add medicine</a></button>
+            </div>
               <ol className="m-2">
                 {medicineList.map((val, key) => {
                   return (
@@ -104,17 +109,19 @@ export default function Dashboard() {
             </div>
             <div className="w-2/3 flex flex-col items-center justify-center">
               <img src={frogImg} alt="Frog Image"></img>
-              <div className="w-2/3 flex flex-col">
-              <button onClick={logMedicine} class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-2 
-              border-b-4 border-green-700 hover:border-blue-500 rounded">This is a button to log medicine
+              <div className="w-2/4 flex flex-col">
+              <button onClick={logMedicine} class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-2 
+              border-b-4 border-green-700 hover:border-blue-500 rounded">Feed the Frog
               </button>
             </div>
 
             </div>
           </div>
           <div className="flex text-center">
-            <div className="w-1/3 flex flex-col">
-              <button><a href='/addmedicine'>add medicine</a></button>
+            <div className="w-1/4 flex flex-col">
+              <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-2 
+              border-b-4 border-green-700 hover:border-blue-500 rounded">
+                <a href='/addmedicine'>add medicine</a></button>
             </div>
           </div>
         </div>
