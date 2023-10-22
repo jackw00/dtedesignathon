@@ -49,6 +49,7 @@ export default function Dashboard() {
   var user = localStorage.getItem('user')
 
   const updatePoints = () => {
+    let newPoints = localStorage.getItem('points')
     if (newPoints > 20) {
       localStorage.setItem("points", 0);
       if (window.confirm(rebirthText) == true) {
