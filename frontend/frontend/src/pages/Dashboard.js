@@ -76,6 +76,7 @@ export default function Dashboard() {
   getMedicine()
 
     return (
+      <div class="overscroll-none">
       <div class="min-h-screen bg-gradient-to-b 
       from-[#f5f7fa] to-[#54a7ff]">
         <div className="">
@@ -98,8 +99,8 @@ export default function Dashboard() {
                 })}
               </ol>
             </div>
-            <div className="w-full md:w-2/3 lg:w-2/3 xl:w-2/3 flex flex-col items-center justify-center max-h-24s">
-              <img className="max-h-full" src={frogImg} alt="Frog Image"></img>
+            <div className="w-full md:w-2/3 lg:w-2/3 xl:w-2/3 flex flex-col items-center justify-center">
+              <img src={frogImg} alt="Frog Image" className=""></img>
               <div className="w-2/4 flex flex-col">
               <button onClick={logMedicine} class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-2 
               border-b-4 border-green-700 hover:border-blue-500 rounded">Feed the Frog
@@ -126,6 +127,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
 }
