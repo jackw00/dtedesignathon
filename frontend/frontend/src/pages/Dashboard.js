@@ -139,8 +139,8 @@ export default function Dashboard() {
                   return (
                     <li>
                       <p className="font-bold text-lg">{val.name}</p>
-                      <p className="text-">- amount: {val.dosage}</p>
-                      <p>- take at {val.timeStr}</p>
+                      <p className="text-">amount: {val.dosage}</p>
+                      <p>take at {val.timeStr}</p>
                       <button className="mb-2 text-sm text-red-800 hover:text-red-500" onClick={() => {deleteMedicine(val.id)}}>delete</button>
                     </li>
                   )
