@@ -21,7 +21,6 @@ export default function Dashboard() {
     let text = "Have you really taken your medicine? :)";
     let rebirthText = "Congratulations! Your frog has made it to old age and is ready to retire. Do you wish to receive a new tadpole?";
     
-
   if (window.confirm(text) == true) {
     if (storedPoints === 0) {
       localStorage.setItem("points", 1);
@@ -54,14 +53,26 @@ export default function Dashboard() {
     
   }
 };
-
   var user = localStorage.getItem('user')
 
   const getMedicine = () => {
     app.post('/show', {
       "user": user
     }).then((response) => {
-      setMedicineList(response.data)
+      const currDate = new Date();
+      const currHour = parseInt(currDate.getHours());
+      const currMin = parseInt(currDate.getMinutes()) / 100;
+      const currTime = currHour + currMin
+      setMedicineList(response.data.sort((a, b)=> (
+        (currTime - a.timeFloat) > (currTime - b.timeFloat)) ? 1 : -1
+        ))
+    })
+  }
+
+  const deleteMedicine = (id) => {
+    console.log(id)
+    app.delete(`/deleteMed/${id}`).then((response) => {
+
     })
   }
 
@@ -77,7 +88,7 @@ export default function Dashboard() {
             </h1>
           </div>
           <div className="flex">
-            <div className="COLUMN 1 w-1/3 flex flex-col">
+            <div className="w-1/3 flex flex-col">
               <p className="font-bold" >Medicine</p>
               <ol>
                 {medicineList.map((val, key) => {
@@ -85,7 +96,8 @@ export default function Dashboard() {
                     <li>
                       <p className=""><span className="font-bold">Name: </span>&nbsp;{val.name}</p>
                       <p>Dosage: {val.dosage}</p>
-                      <p>Time: {val.time}</p>
+                      <p>Time: {val.timeStr}</p>
+                      <button onClick={() => {deleteMedicine(val.id)}}>delete</button>
                     </li>
                   )
                 })}
@@ -96,7 +108,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="flex text-center">
-            <div className="COLUMN 1 w-1/3 flex flex-col">
+            <div className="w-1/3 flex flex-col">
               <button><a href='/addmedicine'>add medicine</a></button>
             </div>
             <div className="w-2/3 flex flex-col">
