@@ -9,19 +9,28 @@ import Tadpole from "../imgs/Tadpole.png"
 import Pill from "../imgs/Pill.png"
 
 
+
+
 export default function Dashboard() {
   
   const [medicineList, setMedicineList] = useState([])
 
-  const logMedicine = () => {
-    let text = "Testing";
-    if (window.confirm(text) == true) {
-      
-    }
-    else {
+  
 
+  const logMedicine = () => {
+    let text = "Have you really taken your medicine? :)";
+    const storedPoints = parseInt(localStorage.getItem("points"), 10) || 0;
+
+  if (window.confirm(text) == true) {
+    if (storedPoints === 0) {
+      localStorage.setItem("points", 1);
+    } 
+    else if (storedPoints !== 0) {
+      const newPoints = storedPoints + (Math.floor(Math.random() * 3) + 1);
+      localStorage.setItem("points", newPoints);
     }
-  };
+  }
+};
 
   var user = localStorage.getItem('user')
 
@@ -60,7 +69,7 @@ export default function Dashboard() {
               </ol>
             </div>
             <div className="w-2/3 flex flex-col">
-                <img src={Lily_Pad}></img>
+                <img src={Tadpole}></img>
             </div>
           </div>
           <div className="flex text-center">
