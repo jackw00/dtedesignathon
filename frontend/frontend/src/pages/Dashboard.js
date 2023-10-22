@@ -123,7 +123,7 @@ export default function Dashboard() {
     )
   }
 
-  updatePoints();
+  //updatePoints();
   getMedicine();
 
     return (
