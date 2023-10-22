@@ -35,7 +35,7 @@ export default function Dashboard() {
               this is where the sticky note thing will be
             </div>
             <div className="w-2/3 flex flex-col">
-                <img src={Lily_Pad}></img>
+                <img src={Tadpole}></img>
             </div>
           </div>
           <div className="flex text-center">
