@@ -73,6 +73,20 @@ export default function Dashboard() {
     })
   }
 
+  const logout = () => {
+    localStorage.removeItem('user')
+    localStorage.removeItem('points')
+    
+  }
+
+  const resetFrog = () => {
+    let text = "Are you sure you want to reset your frog?"
+    if (window.confirm(text) == true) {
+      localStorage.removeItem('points')
+      setFrogImg(Tadpole);
+    }
+  }
+
   getMedicine()
 
     return (
@@ -117,13 +131,13 @@ export default function Dashboard() {
             </div>
             <div className="w-1/3">
               <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-10
-              border-b-4 border-green-700 hover:border-blue-500 rounded">
+              border-b-4 border-green-700 hover:border-blue-500 rounded" onClick = {resetFrog}>
                 reset frog</button>
             </div>
             <div className="w-1/3">
               <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-12
-              border-b-4 border-green-700 hover:border-blue-500 rounded">
-                <a href='/addmedicine'>logout</a></button>
+              border-b-4 border-green-700 hover:border-blue-500 rounded" onClick = {logout}>
+                <a href='/'>logout</a></button>
             </div>
           </div>
         </div>

@@ -11,12 +11,13 @@ export default function Login() {
     if(localStorage.getItem('user') == '' || localStorage.getItem('user') == null){
       return true
     } else {
-        user = localStorage.getItem('user')
+      user = localStorage.getItem('user')
     }
   }
 
-  const handleClick = (val) => {
-    localStorage.setItem('user', val)
+  const handleClick = (input) => {
+    console.log('function called')
+    localStorage.setItem('user', input)
     window.location.reload(false)
   }
 
@@ -36,14 +37,14 @@ export default function Login() {
 
   return (
     <div className="flex flex-col items-center h-screen bg-[#c3ffd4]">
-    <h1 className="text-3xl font-bold m-10">
+      <h1 className="text-3xl font-bold m-10">
         Froggy Pill
       </h1>
       <p>Enter your username below to sign up</p>
 
       <label className='p-2 font-medium text-lg'>Username</label>
-        <input className="block p-2 shadow border rounded" type="text" placeholder="Username" onChange={(e) => {setInput(e.target.value)}}></input>
-        <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded"><a href="/dashboard">Go to Dashboard</a></button>
+      <input className="block p-2 shadow border rounded" type="text" placeholder="Username" onChange={(e) => {setInput(e.target.value)}}></input>
+      <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded" onClick={() => handleClick(input)}>Sign Up</button>
     </div>
   )
 
