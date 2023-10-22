@@ -12,7 +12,6 @@ export default function Login() {
       return true
     } else {
         user = localStorage.getItem('user')
-        console.log(user)
     }
   }
 
@@ -49,6 +48,3 @@ export default function Login() {
   )
 
 }
-
-
-

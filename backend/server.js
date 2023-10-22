@@ -22,11 +22,11 @@ const db = mysql.createConnection({
 app.post('/create', (req, res) => {
     const name = req.body.name
     const user = req.body.user
-    const frequency = req.body.frequency
-    console.log('testing')
+    const dosage = req.body.dosage
+    const time = req.body.time
     db.query(
-        'INSERT INTO users (name, user, frequency) VALUES (?,?,?)',
-        [name, user, frequency], (err, result) => {
+        'INSERT INTO users (user, name, dosage, time) VALUES (?,?,?,?)',
+        [user, name, dosage, time], (err, result) => {
             if(err) {
                 console.log(err)
             } else {
