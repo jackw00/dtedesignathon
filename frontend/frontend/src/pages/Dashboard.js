@@ -10,6 +10,8 @@ import Pill from "../imgs/Pill.png"
 
 
 export default function Dashboard() {
+  
+  const [medicineList, setMedicineList] = useState([])
 
   const logMedicine = () => {
     let text = "Testing";
@@ -20,6 +22,18 @@ export default function Dashboard() {
 
     }
   };
+
+  var user = localStorage.getItem('user')
+
+  const getMedicine = () => {
+    app.post('/show', {
+      "user": user
+    }).then((response) => {
+      setMedicineList(response.data)
+    })
+  }
+
+  getMedicine()
 
     return (
       <div class="h-screen bg-gradient-to-b 
@@ -32,7 +46,18 @@ export default function Dashboard() {
           </div>
           <div className="flex">
             <div className="COLUMN 1 w-1/3 flex flex-col">
-              this is where the sticky note thing will be
+              <p className="font-bold" >Medicine</p>
+              <ol>
+                {medicineList.map((val, key) => {
+                  return (
+                    <li>
+                      <p className=""><span className="font-bold">Name: </span>&nbsp;{val.name}</p>
+                      <p>Dosage: {val.dosage}</p>
+                      <p>Time: {val.time}</p>
+                    </li>
+                  )
+                })}
+              </ol>
             </div>
             <div className="w-2/3 flex flex-col">
                 <img src={Lily_Pad}></img>
@@ -40,7 +65,7 @@ export default function Dashboard() {
           </div>
           <div className="flex text-center">
             <div className="COLUMN 1 w-1/3 flex flex-col">
-              <button>add medicine</button>
+              <button><a href='/addmedicine'>add medicine</a></button>
             </div>
             <div className="w-2/3 flex flex-col">
               <button onClick={logMedicine}>This is a button to log medicine</button>
