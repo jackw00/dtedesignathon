@@ -23,10 +23,11 @@ app.post('/create', (req, res) => {
     const name = req.body.name
     const user = req.body.user
     const dosage = req.body.dosage
-    const time = req.body.time
+    const timeStr = req.body.timeStr
+    const timeFloat = req.body.timeFloat
     db.query(
-        'INSERT INTO users (user, name, dosage, time) VALUES (?,?,?,?)',
-        [user, name, dosage, time], (err, result) => {
+        'INSERT INTO users (user, name, dosage, timeStr, timeFloat) VALUES (?,?,?,?,?)',
+        [user, name, dosage, timeStr, timeFloat], (err, result) => {
             if(err) {
                 console.log(err)
             } else {
@@ -49,7 +50,7 @@ app.post('/show', (req, res) => {
 })
 
 //delete medicine
-app.delete('/deleteFood/:id', (req, res) => {
+app.delete('/deleteMed/:id', (req, res) => {
     const id = req.params.id
     db.query('DELETE FROM users WHERE id = ?', id, (err, result) => {
         if(err) {

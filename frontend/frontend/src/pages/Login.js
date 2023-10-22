@@ -23,27 +23,27 @@ export default function Login() {
   
   if(!checkAuth()) {
     return (
-      <div className="flex flex-col items-center">
-        <h1 className="text-3xl font-bold underline m-10">
+      <div className="flex flex-col items-center h-screen bg-[#c3ffd4]">
+        <h1 className="text-3xl font-bold m-10">
           Froggy Pill
         </h1>
         <p>Welcome back {user}!</p>
-        <button className="bg-gray-400 my-10 px-4 py-1 hover:bg-gray-300 font-bold shadow border rounded"><a href="/dashboard">Go to Dashboard</a></button>
+        <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded"><a href="/dashboard">Go to Dashboard</a></button>
       </div>
 
     );
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-3xl font-bold underline m-10">
+    <div className="flex flex-col items-center h-screen bg-[#c3ffd4]">
+    <h1 className="text-3xl font-bold m-10">
         Froggy Pill
       </h1>
       <p>Enter your username below to sign up</p>
 
       <label className='p-2 font-medium text-lg'>Username</label>
         <input className="block p-2 shadow border rounded" type="text" placeholder="Username" onChange={(e) => {setInput(e.target.value)}}></input>
-        <button className="bg-gray-400 my-10 px-4 py-1 hover:bg-gray-300 font-bold shadow border rounded" onClick={() => handleClick(input)}>Sign Up</button>
+        <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded"><a href="/dashboard">Go to Dashboard</a></button>
     </div>
   )
 

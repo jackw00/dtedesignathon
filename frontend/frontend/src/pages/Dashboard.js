@@ -15,22 +15,20 @@ export default function Dashboard() {
   
   const [medicineList, setMedicineList] = useState([])
 
-  
-
   const logMedicine = () => {
     let text = "Have you really taken your medicine? :)";
     const storedPoints = parseInt(localStorage.getItem("points"), 10) || 0;
 
-  if (window.confirm(text) == true) {
-    if (storedPoints === 0) {
-      localStorage.setItem("points", 1);
-    } 
-    else if (storedPoints !== 0) {
-      const newPoints = storedPoints + (Math.floor(Math.random() * 3) + 1);
-      localStorage.setItem("points", newPoints);
+    if (window.confirm(text) == true) {
+      if (storedPoints === 0) {
+        localStorage.setItem("points", 1);
+      } 
+      else if (storedPoints !== 0) {
+        const newPoints = storedPoints + (Math.floor(Math.random() * 3) + 1);
+        localStorage.setItem("points", newPoints);
+      }
     }
-  }
-};
+  };
 
   var user = localStorage.getItem('user')
 
@@ -38,7 +36,20 @@ export default function Dashboard() {
     app.post('/show', {
       "user": user
     }).then((response) => {
-      setMedicineList(response.data)
+      const currDate = new Date();
+      const currHour = parseInt(currDate.getHours());
+      const currMin = parseInt(currDate.getMinutes()) / 100;
+      const currTime = currHour + currMin
+      setMedicineList(response.data.sort((a, b)=> (
+        (currTime - a.timeFloat) > (currTime - b.timeFloat)) ? 1 : -1
+        ))
+    })
+  }
+
+  const deleteMedicine = (id) => {
+    console.log(id)
+    app.delete(`/deleteMed/${id}`).then((response) => {
+
     })
   }
 
@@ -54,7 +65,7 @@ export default function Dashboard() {
             </h1>
           </div>
           <div className="flex">
-            <div className="COLUMN 1 w-1/3 flex flex-col">
+            <div className="w-1/3 flex flex-col">
               <p className="font-bold" >Medicine</p>
               <ol>
                 {medicineList.map((val, key) => {
@@ -62,7 +73,8 @@ export default function Dashboard() {
                     <li>
                       <p className=""><span className="font-bold">Name: </span>&nbsp;{val.name}</p>
                       <p>Dosage: {val.dosage}</p>
-                      <p>Time: {val.time}</p>
+                      <p>Time: {val.timeStr}</p>
+                      <button onClick={() => {deleteMedicine(val.id)}}>delete</button>
                     </li>
                   )
                 })}
@@ -73,7 +85,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="flex text-center">
-            <div className="COLUMN 1 w-1/3 flex flex-col">
+            <div className="w-1/3 flex flex-col">
               <button><a href='/addmedicine'>add medicine</a></button>
             </div>
             <div className="w-2/3 flex flex-col">
