@@ -9,17 +9,26 @@ import Tadpole_Frog from "../imgs/Tadpole_Frog.png";
 import Tadpole from "../imgs/Tadpole.png"
 
 
+
+
 export default function Dashboard() {
 
-  const logMedicine = () => {
-    let text = "Testing";
-    if (window.confirm(text) == true) {
-      
-    }
-    else {
+  
 
+  const logMedicine = () => {
+    let text = "Have you really taken your medicine? :)";
+    const storedPoints = parseInt(localStorage.getItem("points"), 10) || 0;
+
+  if (window.confirm(text) == true) {
+    if (storedPoints === 0) {
+      localStorage.setItem("points", 1);
+    } 
+    else if (storedPoints !== 0) {
+      const newPoints = storedPoints + (Math.floor(Math.random() * 3) + 1);
+      localStorage.setItem("points", newPoints);
     }
-  };
+  }
+};
 
     return (
       <div class="h-screen bg-gradient-to-b 
