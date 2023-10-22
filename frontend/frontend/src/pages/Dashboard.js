@@ -82,8 +82,8 @@ export default function Dashboard() {
       <div class="h-screen bg-gradient-to-b 
       from-[#f5f7fa] to-[#54a7ff]">
         <div className="">
-          <div className="flex-row text-center bg-[#faf796] shadow-lg shadow-[#ffd105] box-sizing: h-28 w-200 p-7 text-5xl font-Georgia font-bold underline">
-            Froggy Pill
+          <div className="flex-row text-center bg-[#97de70] shadow-lg shadow-[#50763c] box-sizing: h-28 w-200 p-7 text-5xl font-mono font-bold">
+                Froggy Pill
           </div>
           <div className="flex">
             <div className="w-1/3 flex flex-col p-5">
