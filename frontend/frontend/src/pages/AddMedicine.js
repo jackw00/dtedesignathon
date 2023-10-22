@@ -18,11 +18,10 @@ export default function Login() {
         var hours = newtime.substring(0, 2)
         var mins = newtime.substring(3, 5)
         var timeint = parseInt(hours) + parseInt(mins) / 100        
-        var dosageint = parseInt(dosage)
         app.post('/create', {
             "name": name,
             "user": user,
-            "dosage": dosageint,
+            "dosage": dosage,
             "timeStr": timeStr,
             "timeFloat": timeint
         })
@@ -42,7 +41,7 @@ export default function Login() {
             <label className="p-2 font-bold text-lg">Name: </label>
             <input className="p-2 shadow border rounded" placeholder="Flintstone Gummy" onChange={(e) => {setName(e.target.value)}}></input>
             <label className="block p-2 font-bold text-lg text-left">Dosage: </label>
-            <input className="block p-2 shadow border rounded" type="text" placeholder="3" onChange= {(e) => {setDosage(e.target.value)}}></input>
+            <input className="block p-2 shadow border rounded" type="text" placeholder="2 pills, 250mg, 2oz, etc." onChange= {(e) => {setDosage(e.target.value)}}></input>
             <label className="block p-2 font-bold text-lg">Time (military time): </label>
             <input className="block p-2 shadow border rounded" placeholder="12:00" type="text" onChange= {(e) => {setTime(e.target.value)}}></input>
             <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded" onClick={addMedicine}>Add Medicine</button>

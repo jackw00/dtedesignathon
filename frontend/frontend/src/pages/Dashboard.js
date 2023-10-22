@@ -84,26 +84,26 @@ export default function Dashboard() {
         <div className="">
           <div className="flex-row text-center bg-[#97de70] shadow-lg shadow-[#50763c] box-sizing: h-28 w-200 p-7 text-5xl font-mono font-bold">
                 Froggy Pill
-      
           </div>
           <div className="flex">
-            <div className="w-1/3 flex flex-col">
-              <p className="font-bold" >Medicine</p>
-              <ol>
+            <div className="w-1/3 flex flex-col p-5">
+              <p className="font-bold text-2xl underline" >Medicine</p>
+              <ol className="m-2">
                 {medicineList.map((val, key) => {
                   return (
                     <li>
-                      <p className=""><span className="font-bold">Name: </span>&nbsp;{val.name}</p>
-                      <p>Dosage: {val.dosage}</p>
-                      <p>Time: {val.timeStr}</p>
-                      <button onClick={() => {deleteMedicine(val.id)}}>delete</button>
+                      <p className="font-bold text-lg">{val.name}</p>
+                      <p className="text-">- amount: {val.dosage}</p>
+                      <p>- take at {val.timeStr}</p>
+                      <button className="text-sm text-red-800 hover:text-red-500" onClick={() => {deleteMedicine(val.id)}}>delete</button>
+                      <hr className=""></hr>
                     </li>
                   )
                 })}
               </ol>
             </div>
-            <div className="w-2/3 flex flex-col">
-              <img src={frogImg} alt="Frog Image"></img>
+            <div className="w-2/3 flex flex-col justify-center items-center">
+              <img className="" src={frogImg} alt="Frog Image"></img>
             </div>
           </div>
           <div className="flex text-center">
