@@ -2,11 +2,11 @@ import React from "react";
 import app from "../axiosConfig.js";
 import { useState } from "react";
 
-import Lily_Pad from "../imgs/Lily_Pad.png";
 import Frog from "../imgs/Frog.png";
 import Old_Frog from "../imgs/Old_Frog.png";
 import Tadpole_Frog from "../imgs/Tadpole_Frog.png";
 import Tadpole from "../imgs/Tadpole.png"
+import Pill from "../imgs/Pill.png"
 
 
 export default function Dashboard() {
