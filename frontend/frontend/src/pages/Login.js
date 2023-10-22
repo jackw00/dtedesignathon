@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import app from '../axiosConfig.js'
 
 export default function Login() {
   const [input, setInput] = useState('')
@@ -25,7 +24,7 @@ export default function Login() {
   if(!checkAuth()) {
     return (
       <div className="flex flex-col items-center h-screen bg-[#c3ffd4]">
-        <h1 className="text-3xl font-bold m-10">
+        <h1 className="text-3xl font-bold font-mono m-10">
           Froggy Pill
         </h1>
         <p>Welcome back {user}!</p>
@@ -40,7 +39,7 @@ export default function Login() {
       <h1 className="text-3xl font-bold m-10">
         Froggy Pill
       </h1>
-      <p>Enter your username below to sign up</p>
+      <p>Enter your username below to sign up or sign in!</p>
 
       <label className='p-2 font-medium text-lg'>Username</label>
       <input className="block p-2 shadow border rounded" type="text" placeholder="Username" onChange={(e) => {setInput(e.target.value)}}></input>

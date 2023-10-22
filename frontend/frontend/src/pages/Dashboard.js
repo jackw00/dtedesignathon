@@ -6,7 +6,6 @@ import Frog from "../imgs/Frog.png";
 import Old_Frog from "../imgs/Old_Frog.png";
 import Tadpole_Frog from "../imgs/Tadpole_Frog.png";
 import Tadpole from "../imgs/Tadpole.png"
-import Pill from "../imgs/Pill.png"
 
 export default function Dashboard() {
   
@@ -89,6 +88,28 @@ export default function Dashboard() {
 
   getMedicine()
 
+
+  const checkAuth = () => {
+    if(localStorage.getItem('user') == '' || localStorage.getItem('user') == null){
+      return true
+    } else {
+      user = localStorage.getItem('user')
+      return false
+    }
+  }
+
+  if(checkAuth()){
+    return (
+      <div className="flex flex-col items-center h-screen bg-[#c3ffd4]">
+        <h1 className="text-3xl font-bold font-mono m-10">
+          Froggy Pill
+        </h1>
+        <p>You aren't logged in!</p>
+        <button className="bg-[#97de70] my-5 hover:bg-[#50763c] font-bold py-2 px-8 text-lg shadow border rounded"><a href="/">Click here to go to sign in.</a></button>
+      </div>
+    )
+  }
+
     return (
       <div class="overscroll-none">
       <div class="min-h-screen bg-gradient-to-b 
@@ -98,8 +119,9 @@ export default function Dashboard() {
               Froggy Pill
           </div>
           <div className="flex">
-            <div className="w-full md:w-1/3 lg:w-1/3 xl:w-1/3 flex flex-col p-5 mt-10 font-mono text-center">
-              <p className="font-bold text-2xl underline" >Medicine</p>
+            <div className="w-full md:w-2/5 lg:w-2/5 xl:w-2/5 flex flex-col p-5 mt-10 font-mono text-center justify-center">
+              <div className="bg-gray-200 border border-black rounded-md border-4 min-h-full">
+              <p className="p-2 font-bold text-2xl underline" >Medicine List</p>
               <ol className="m-2">
                 {medicineList.map((val, key) => {
                   return (
@@ -112,9 +134,10 @@ export default function Dashboard() {
                   )
                 })}
               </ol>
+              </div>
             </div>
-            <div className="w-full md:w-2/3 lg:w-2/3 xl:w-2/3 flex flex-col items-center justify-center">
-              <img src={frogImg} alt="Frog Image" className=""></img>
+            <div className="w-full md:w-3/5 lg:w-3/5 xl:w-3/5 flex flex-col items-center justify-center py-4 ">
+              <img className="max-h-96" src={frogImg} alt="Frog Image"></img>
               <div className="w-2/4 flex flex-col">
               <button onClick={logMedicine} class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-2 
               border-b-4 border-green-700 hover:border-blue-500 rounded">Feed the Frog
@@ -123,21 +146,23 @@ export default function Dashboard() {
 
             </div>
           </div>
-          <div className="flex text-center p-10">
-            <div className="w-1/3">
-              <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-5
-              border-b-4 border-green-700 hover:border-blue-500 rounded">
-                <a href='/addmedicine'>add medicine</a></button>
+          <div className="flex">
+            <div className="text-center w-2/5 p-10">
+              <div className="w-full">
+                <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-8
+                border-b-4 border-green-700 hover:border-blue-500 rounded">
+                  <a href='/addmedicine'>Add Medicine</a></button>
+              </div>
             </div>
-            <div className="w-1/3">
-              <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-10
-              border-b-4 border-green-700 hover:border-blue-500 rounded" onClick = {resetFrog}>
-                reset frog</button>
-            </div>
-            <div className="w-1/3">
-              <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-12
-              border-b-4 border-green-700 hover:border-blue-500 rounded" onClick = {logout}>
-                <a href='/'>logout</a></button>
+            <div className="w-3/5 p-10">
+              <div className="text-center">
+                <button class="mr-20 bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-10
+                border-b-4 border-green-700 hover:border-blue-500 rounded" onClick = {resetFrog}>
+                  Reset Frog</button>
+                <button class="bg-[#97de70] hover:bg-green-400 font-mono font-bold py-2 px-12
+                border-b-4 border-green-700 hover:border-blue-500 rounded" onClick = {logout}>
+                  <a href='/'>Logout</a></button>
+              </div>
             </div>
           </div>
         </div>
