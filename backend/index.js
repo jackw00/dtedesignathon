@@ -25,14 +25,12 @@ app.post('/create', (req, res) => {
     const dosage = req.body.dosage
     const timeStr = req.body.timeStr
     const timeFloat = req.body.timeFloat
-    console.log('adding medicine...')
     db.query(
         'INSERT INTO users (user, name, dosage, timeStr, timeFloat) VALUES (?,?,?,?,?)',
         [user, name, dosage, timeStr, timeFloat], (err, result) => {
             if(err) {
                 console.log(err)
             } else {
-                console.log("Medicine added!")
                 res.send("Medicine added!")
             }
         }
