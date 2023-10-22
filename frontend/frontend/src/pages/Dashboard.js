@@ -2,7 +2,6 @@ import React from "react";
 import app from "../axiosConfig.js";
 import { useState } from "react";
 
-import Lily_Pad from "../imgs/Lily_Pad.png";
 import Frog from "../imgs/Frog.png";
 import Old_Frog from "../imgs/Old_Frog.png";
 import Tadpole_Frog from "../imgs/Tadpole_Frog.png";
@@ -18,7 +17,7 @@ export default function Dashboard() {
         <h1 className="text-3xl font-bold underline">
           TESTING TAILWIND CSS
         </h1>
-        <div class="inset-44">
+        <div class="absolute bottom-20 left-20">
           <img src = {Lily_Pad}>
           </img>
         </div>
