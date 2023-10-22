@@ -60,7 +60,7 @@ export default function Login() {
         <form className="w-full max-w-md rounded-2xl p-5 mx-10 flex flex-col">
             <label className="p-2 font-bold text-lg">Name: </label>
             <input className="p-2 shadow border rounded" placeholder="Flintstone Gummy" onChange={(e) => {setName(e.target.value)}}></input>
-            <label className="block p-2 font-bold text-lg text-left">Dosage: </label>
+            <label className="block p-2 font-bold text-lg text-left">Amount: </label>
             <input className="block p-2 shadow border rounded" type="text" placeholder="2 pills, 250mg, 2oz, etc." onChange= {(e) => {setDosage(e.target.value)}}></input>
             <label className="block p-2 font-bold text-lg">Time (military time): </label>
             <input className="block p-2 shadow border rounded" placeholder="12:00" type="text" onChange= {(e) => {setTime(e.target.value)}}></input>
